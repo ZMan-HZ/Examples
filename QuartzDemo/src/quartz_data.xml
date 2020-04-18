@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData http://www.quartz-scheduler.org/xml/job_scheduling_data_2_8.xsd" 
+    version="2.8">
+      
+    
+    <schedule>
+	
+	    <job>
+	        <name>ClusteredJob</name>
+	        <group>GroupOfClusteredJobs</group>
+	        <description>This is the description of ClusteredJob</description>
+	        <job-class>com.ssc.quartz.ppt.configuration.ClusteredJob</job-class>
+	        <durability>false</durability>
+	        <recover>true</recover>
+	        <job-data-map>
+	            <entry>
+	                <key>someKey</key>
+	                <value>someValue</value>
+	            </entry>
+	         </job-data-map>
+	    </job>
+	    
+		    
+	    <trigger>
+	        <cron>
+	            <name>TestCronTriggerAtEveryMinute</name>
+	            <group>GroupOfTestJobTriggers</group>
+	            <job-name>ClusteredJob</job-name>
+	            <job-group>GroupOfClusteredJobs</job-group>
+      
+                <cron-expression>0 * * ? * *</cron-expression>
+	        </cron>
+	    </trigger>
+	 </schedule>    
+</job-scheduling-data>
